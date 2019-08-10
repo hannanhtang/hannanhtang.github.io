@@ -1,0 +1,1401 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>2 2 c++</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body>
+      <nav>
+    
+    <a href="/" >Home</a>
+    
+    <a href="/blog.html" >Blog</a>
+    
+    <a href="/about.html" >About</a>
+    
+    <a href="/staff.html" >Staff</a>
+    
+</nav>
+    <h1>2 2 c++</h1>
+
+<p>
+  09 Aug 2019
+  
+  
+</p>
+
+<p>计算机语言的简单学习步骤：(快速掌握一门语言的50%)</p>
+
+<ol>
+  <li>了解该语言的基本<strong>语法结构</strong>（循环分支函数结构）, 和<strong>基本数据类型</strong></li>
+  <li>其次掌握数组和其他<strong>集合类</strong>的使用</li>
+  <li>基本<strong>函数式编程</strong>或者<strong>面向对象</strong>的特征</li>
+  <li>异常、错误处理、断言、日志和调试支持，对单元测试的支持</li>
+  <li>程序代码和可执行代码的组织机制，运行时模块加载、符号查找机制</li>
+  <li>基本输入输出和文件处理，输入输出流类的组织</li>
+  <li>该语言如何进行callback方法调用，如何支持事件驱动编程模型</li>
+</ol>
+
+<h1 id="1基本的语法结构和数据类型">1、基本的语法结构和数据类型</h1>
+
+<h4 id="11-基本格式">1.1 基本格式</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Hello.cpp</span>
+<span class="cp">#include&lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello World!"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//循环</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){}</span>
+<span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">){}</span>
+<span class="k">do</span><span class="p">{}</span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">switch</span><span class="p">(</span><span class="err">表达式</span><span class="p">){</span> 
+    <span class="k">case</span> <span class="err">常量表达式</span><span class="mi">1</span><span class="p">:</span>  <span class="err">语句</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">case</span> <span class="err">常量表达式</span><span class="mi">2</span><span class="p">:</span>  <span class="err">语句</span><span class="mi">2</span><span class="p">;</span>
+    <span class="err">…</span> 
+    <span class="k">case</span> <span class="err">常量表达式</span><span class="n">n</span><span class="p">:</span>  <span class="err">语句</span><span class="n">n</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>  <span class="err">语句</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>C++可以使用C的函数，只需要添加头文件：stdio.h</li>
+  <li>C++要求   int main()</li>
+  <li>尽量使用  //  来注释，/**/   是C的注释，但也可以使用</li>
+  <li>预处理就是将   # 的文件添加到文件中，再编译；</li>
+  <li>头文件：&lt;&gt;先在系统标准库中查找，”“先在工程文件目录中查找；</li>
+  <li>格式：空白：回车、空格、和制表符都相同；C++11标准新增加的原始（raw）字符串中可以使用回车；</li>
+  <li>允许连续赋值： int a,b,c;   a = b = c = 5;   从右向左赋值，5赋给c，c再赋给b，等；</li>
+  <li>用大括号初始化：int  tang = { 6 }; // 可以省略 等号；大括号内可以不包含任何数字，此时<strong>默认初始化为0</strong>；大括号初始化对所有类型都适用，且都可以不使用等号；</li>
+  <li><strong>sizeof()</strong>   返回的是字节数   求变量名的长度时，括号可以不用；</li>
+  <li>左值：左值参数是可以被引用的数据对象，如变量，数组元素，结构成员，引用和解除引用的指针；非左值（也就是右值）包括字面常量，和包含多项式的表达式；如：常规变量属于可修改的左值，const修饰的变量属于不可修改的左值；</li>
+  <li>变量赋值： int a = 10；变量初始化：int a(10)；</li>
+</ul>
+
+<h4 id="12-基本数据类型">1.2 基本数据类型</h4>
+
+<p>int</p>
+
+<p>float</p>
+
+<h4 id="13-函数">1.3 函数</h4>
+
+<p><strong>定义</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">function</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>   		<span class="c1">//函数原型</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">function</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">function</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//todo</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>函数可以返回基本类型；结构，对象，唯一不能返回的是数组；</p>
+
+<p><strong>函数的原型</strong></p>
+
+<p>原型就是main函数之前对要调用的其他函数的声明；</p>
+
+<p>它为编译提供了函数的返回值类型，函数完成计算后将返回值放在指定位置，然后调用函数知道从哪儿取，取多少返回值；</p>
+
+<p><strong>参数</strong></p>
+
+<p>实参（argument）形参（parameter）</p>
+
+<ul>
+  <li>如果传递的不是指针，则会将实参复制一份给形参；</li>
+  <li>在形参中：int arr[]   $\Leftrightarrow$  int* arr（都是指：arr是一个指向int的指针）</li>
+</ul>
+
+<p><strong>二维数组传参</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">},{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">},{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">}};</span>
+<span class="kt">int</span> <span class="n">sum</span><span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">arr</span><span class="p">)[</span><span class="mi">4</span><span class="p">]</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<span class="c1">//只能固定列数，传递行数；(*arr)[4] 是指向以（元素个数为4的）数组为元素的数组的首地址；</span>
+<span class="c1">//这种定义方式是让arr称为跨度为 int[4]的指针；如 *(arr + 1)[0] 的值为 5</span>
+<span class="kt">int</span> <span class="n">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[][</span><span class="mi">4</span><span class="p">]</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span><span class="c1">//另一种形式</span>
+<span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        	<span class="n">total</span> <span class="o">+=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;}</span>  <span class="c1">//实参是二维数组名data</span>
+</code></pre></div></div>
+
+<p>二维数组时，不能用const修饰，因为const只能用指向基本类型的指针；而此处是指向指针的指针；</p>
+
+<p><strong>内联函数</strong></p>
+
+<p>方式：在编译过程中，在调用其他函数的位置处直接创建那个函数的副本；</p>
+
+<p>分析：节约跳转到对应函数位置所花费的时间和内存开销(保存现场环境)；但会增加代码量，而且节约的时间有限，除非特别经常调用这个函数；【就是代码特别短但又特别常用的时候，最好函数能够写在一行里】</p>
+
+<p>具体实现：函数声明和定义前加上关键字： <strong>inline</strong>;  最后直接在声明的时候就定义代码（即写函数头（原型）的时候直接定义）；</p>
+
+<p>特点：内联函数<strong>不能递归</strong>；如果代码过大，编译器会拒绝满足请求；</p>
+
+<h4 id="14-指针">1.4 指针</h4>
+
+<p>程序在存储数据的时候，必须跟踪的三种基本属性：<strong>地址，大小，数据类型</strong>；而所谓的指针就是变量的地址；</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="k">delete</span> <span class="n">c</span><span class="p">;</span>
+<span class="k">delete</span> <span class="p">[]</span> <span class="n">d</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>数组名就是一个指针；</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">arr</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+<span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="c1">//在main函数栈中的变量a;是立即数寻址</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">//在栈中的b是间接寻址，指向也在栈中的a</span>
+<span class="o">&amp;</span><span class="n">b</span> <span class="o">=</span>  <span class="p">[</span><span class="n">ebp</span> <span class="o">-</span> <span class="n">xxh</span><span class="p">]</span> 
+<span class="n">b</span>  <span class="o">=</span>  <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span> <span class="o">-</span> <span class="n">xxh</span><span class="p">]</span>
+<span class="o">*</span><span class="n">b</span> <span class="o">=</span>  <span class="n">ptr</span><span class="p">[</span><span class="n">ptr</span><span class="p">[</span><span class="n">ebp</span> <span class="o">-</span> <span class="n">xxh</span><span class="p">]]</span>  <span class="c1">//间接寻址</span>
+</code></pre></div></div>
+
+<h4 id="15-const">1.5 const</h4>
+
+<p>（const适用于 “右侧就近原则”）</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>		<span class="c1">//声明常量</span>
+<span class="kt">int</span> <span class="k">const</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>		<span class="c1">//与上面声明等价</span>
+
+<span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">pt</span><span class="p">;</span><span class="c1">//指不能通过 *pt 来修改值;pt变量本身可变;pt指向的值也可变；</span>
+<span class="kt">int</span><span class="o">*</span> <span class="k">const</span> <span class="n">pt</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">;</span><span class="c1">//pt这个指针变量是常量，即pt指针只能指向m对象；可以通过pt改变m的值；</span>
+</code></pre></div></div>
+
+<p>const修饰形参</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">a</span><span class="p">);</span>			
+<span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="kt">int</span> <span class="k">const</span> <span class="n">a</span><span class="p">);</span>
+<span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">*</span> <span class="n">b</span><span class="p">);</span>
+<span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="k">const</span> <span class="n">b</span><span class="p">);</span>
+<span class="c1">//以上修饰，在func内与上面一样</span>
+<span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">a1</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<h4 id="16-引用变量">1.6 引用变量(&amp;)</h4>
+
+<p>作用：声明另外一个变量名指向同一个内存；用作形参的时候，是直接改变原始的数据，而不会创建副本；</p>
+
+<p><strong>1. 实现</strong>：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">rats</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">&amp;</span> <span class="n">rodents</span> <span class="o">=</span> <span class="n">rates</span><span class="p">;</span>
+<span class="c1">//别名，在编译过程中，两个变量都是同一个栈上的地址；</span>
+<span class="kt">int</span><span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">*&amp;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="c1">//无论如何，都只有一个堆中的对象和一个栈内的指针，各种引用变量都会在编译阶段自己对号入座到指针的地址或者指针本身存的地址上；</span>
+
+</code></pre></div></div>
+
+<p><strong>2. 参数中的引用变量</strong></p>
+
+<p>其实，就是相当于直接使用了调用函数时传递的那个实参变量；
+具体原理：传递参数的过程就是基址ebp的左右复制的过程，如果在形参中加了引用，则直接调用ebp左侧的变量，即实参。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">squre</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">){};</span>
+</code></pre></div></div>
+
+<p><strong>3 . const 与 &amp;</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">//如果a是常量，则引用变量也必须是常量</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">&amp;</span> <span class="k">const</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>			
+<span class="c1">//会报“限定符丢失” 的错误，原因在于const右侧接近于b，指的是b始终是a的引用，这与“引用声明之后就没有办法改变”相重复了，所有接近b的const没有作用；</span>
+</code></pre></div></div>
+
+<p><strong>4. const修饰类成员函数</strong></p>
+
+<p>表明此成员函数不能修改普通成员变量；不包括静态变量等；</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="n">func</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>			<span class="c1">//注意const的位置</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">A</span><span class="o">::</span><span class="n">func</span><span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="n">a</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"func()	"</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="17-静态变量static">1.7 静态变量(static)</h4>
+
+<p><strong>静态局部变量</strong></p>
+
+<ul>
+  <li><strong>初始化</strong> : 函数第一次被调用时初始化，之后就是直接跳过（如果声明时没有赋值，默认赋0）</li>
+  <li><strong>生存周期</strong> : 一直存在，直接程序结束</li>
+  <li><strong>使用范围</strong> : 仅限局部调用</li>
+</ul>
+
+<p><strong>静态全局变量（文件隔离）</strong></p>
+
+<ul>
+  <li>定义在函数体外，用于修饰全局变量，表示该变量只在本文件可见。</li>
+  <li>作用：文件隔离，static的变量仅在本文件可见，全局变量则不是；</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//file a.c</span>
+
+<span class="c1">//static int n = 15; 	//b文件会报错</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> 			<span class="c1">//b文件可以使用n变量</span>
+ 
+
+<span class="c1">//file b.c</span>
+
+<span class="k">extern</span> <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>静态函数（文件隔离）</strong></p>
+
+<p>功能同上</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//file a.c</span>
+
+<span class="kt">void</span> <span class="n">func</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"func()"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;};</span>
+<span class="c1">//static void func(){cout &lt;&lt; "func()" &lt;&lt; endl;};</span>
+
+<span class="c1">//file b.c</span>
+
+<span class="kt">void</span> <span class="n">func</span><span class="p">();</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">func</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>上面三种使用方法C与C++都可以使用；下面两种是C++独有的，也就是类(class)中static的使用：</p>
+
+<p><strong>静态类成员变量（表示整个类的共享数据）</strong></p>
+
+<ul>
+  <li>
+    <p>静态类成员变量是类变量，属于类，可以用类名调用；</p>
+  </li>
+  <li>静态数据成员存储在全局数据区。定义时要分配空间，所以不能在类声明中定义。</li>
+  <li>各个类的实例共享一个静态成员变量；</li>
+</ul>
+
+<p><strong>静态成员函数</strong></p>
+
+<ul>
+  <li>此函数属于此类；</li>
+  <li>可通过类名全局调用；</li>
+  <li>类对象实例可直接调用；</li>
+</ul>
+
+<p>关键字static 直接在class前面，好像不起作用</p>
+
+<pre><code class="language-C++">static class A
+{
+public:
+	int a;
+    void func(){cout &lt;&lt; "func()" &lt;&lt; endl;};
+}
+</code></pre>
+
+<h1 id="2集合类型">2、集合类型</h1>
+
+<h4 id="21-数组">2.1 数组</h4>
+
+<h4 id="22-结构体">2.2 结构体</h4>
+
+<p>定义：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">inflatable</span>
+<span class="p">{</span>
+    <span class="kt">char</span> 	<span class="n">b</span><span class="p">;</span>
+    <span class="kt">int</span> 	<span class="n">c</span><span class="p">;</span>
+    <span class="kt">double</span> 	<span class="n">d</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">TreeNode</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+	<span class="n">TreeNode</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
+	<span class="n">TreeNode</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+	<span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">left</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">right</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span><span class="c1">//有构造函数</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="23-共用体union">2.3 共用体(union)</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">union</span> <span class="n">tang</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>整个共用体的大小为<strong>最大的成员变量的大小</strong>；匿名共用体可放于结构体中，然后直接用结构体声明的对象来调用；作用：常用于给嵌入式系统编写程序时节省空间，<strong>平时基本不用</strong>；</p>
+
+<h4 id="24-枚举enum">2.4 枚举（enum）</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="n">tang</span> <span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="n">bfsdfsdf</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">efasdfadsf</span><span class="p">};</span>
+<span class="n">tang</span> <span class="n">h</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+<span class="n">tang</span> <span class="n">k</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">h</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="c1">//result </span>
+<span class="mi">3</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>枚举量是整型；所以上面的h = 3，k = 0；</p>
+
+<p>没有定义枚举的算术运算；</p>
+
+<p>但 不能将3赋值给h;  可以通过类型转换实现  h = tang(3)   超出范围不会报错;</p>
+
+<p>而 k和h 可以相互赋值；</p>
+
+<p>枚举的赋值：  enum tang{a,b =100,c};  result：a = 0;b = 100; c = 101;(默认在前一个值上加1)  只能赋值int及以上long  和 long long类型的常量；</p>
+
+<p>枚举的取值范围： 大于初始化里的值中最大值的2的最小幂 - 1；如上面 最大值为c = 101; 而 2的7次方 为128； 则合法的最小值为127；（经测试，超过也不会报错）</p>
+
+<h4 id="25-c风格字符串">2.5 C风格字符串</h4>
+
+<pre><code class="language-C++">char name[11] = {'T','a','n','g','S','h','u','a','n','g','\0'};
+char name1[12] = "TangShuang1";
+</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>内部函数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>strcpy(s1, s2);</strong> 复制字符串 s2 到字符串 s1。</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>strcat(s1, s2);</strong> 连接字符串 s2 到字符串 s1 的末尾。</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>strlen(s1);</strong> 返回字符串 s1 的长度。</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>strcmp(s1, s2);</strong> 如果 s1 和 s2 是相同的，则返回 0；如果 s1&lt;s2 则返回值小于 0；如果 s1&gt;s2 则返回值大于 0。</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>strchr(s1, ch);</strong> 返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>strstr(s1, s2);</strong> 返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="26-stdstring">2.6 std::string</h4>
+
+<p>是在std::string头文件里定义的一个类；</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include&lt;string&gt;
+</span><span class="n">string</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">"Tang"</span><span class="p">;</span>
+<span class="n">string</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"Shuang"</span><span class="p">;</span>
+<span class="n">string</span> <span class="n">s3</span> <span class="o">=</span> <span class="n">s2</span><span class="p">;</span>				<span class="c1">//复制</span>
+<span class="n">string</span> <span class="n">s3</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="p">;</span>		<span class="c1">//连接</span>
+<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">s3</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>		<span class="c1">//长度</span>
+</code></pre></div></div>
+
+<h4 id="27-stdvector">2.7 std::Vector</h4>
+
+<p>是数组的增强版：不用管数据的大小，附带了很多函数</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//声明</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">;</span>                         <span class="c1">//声明一个int型向量a</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>                     <span class="c1">//声明一个初始大小为10的向量</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>                  <span class="c1">//声明一个初始大小为10且初始值都为1的向量</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>                      <span class="c1">//声明并用向量a初始化向量b</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="o">+</span><span class="mi">3</span><span class="p">);</span> <span class="c1">//将a向量中从第0个到第2个(共3个)作为向量b的初始值</span>
+
+
+<span class="c1">//输入输出</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>      <span class="c1">//大小为10初值为0的向量a</span>
+<span class="c1">//对其中部分元素进行输入</span>
+<span class="n">cin</span> <span class="o">&gt;&gt;</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">;</span>
+<span class="n">cin</span> <span class="o">&gt;&gt;</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">;</span>
+<span class="n">cin</span> <span class="o">&gt;&gt;</span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="p">;</span>
+<span class="c1">//全部输出</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">" "</span> <span class="p">;</span>
+
+
+
+
+</code></pre></div></div>
+
+<h4 id="28-stdstack">2.8 std::stack</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">stack</span>
+<span class="cp">#include&lt;stack&gt;
+</span><span class="k">class</span> <span class="nc">stack</span>
+<span class="p">{</span>
+    <span class="n">push</span><span class="p">(</span><span class="n">item</span><span class="p">){}</span>
+    <span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">){}</span>
+    <span class="n">top</span><span class="p">(){}</span>
+    <span class="n">empty</span><span class="p">(){}</span>
+    <span class="n">size</span><span class="p">(){}</span>
+<span class="p">}</span>
+<span class="cp">#use
+</span><span class="n">stack</span><span class="o">&lt;</span><span class="n">type</span><span class="o">&gt;</span> <span class="n">name</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include&lt;iostream&gt;
+#include&lt;stack&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">stack</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">s</span><span class="p">;</span><span class="c1">//定义一个栈</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%lf</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">top</span><span class="p">());</span>
+		<span class="n">s</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"栈内的元素的个数为："</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>map&lt;int,int&gt;</p>
+
+<h1 id="3面向对象">3、面向对象</h1>
+
+<h4 id="41基本知识">4.1基本知识</h4>
+
+<p>基本结构</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">classname</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">classname</span><span class="p">(){}</span>
+    <span class="o">~</span><span class="n">classname</span><span class="p">(){}</span>
+    <span class="kt">void</span> <span class="n">function</span><span class="p">(</span><span class="n">argument</span> <span class="n">list</span><span class="p">){}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>成员默认私有（private）；</li>
+  <li>成员不会默认初始化；</li>
+  <li>构造函数必须公有（public），否则不能初始化对象；</li>
+  <li>在声明中定义的函数，默认都是<strong>内联函数</strong>；</li>
+  <li>析构函数——它会在每次删除所创建的对象时执行，用于释放内存。</li>
+  <li>类有很多<a href="https://www.cnblogs.com/lsgxeva/p/7668200.html">默认函数</a></li>
+</ul>
+
+<p><strong>类&amp;结构体</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">结构体</th>
+      <th style="text-align: center">类</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">默认全部为Public</td>
+      <td style="text-align: center">默认为private</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">有默认初始值</td>
+      <td style="text-align: center">没有默认初始值</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">用{  }可以按顺序给部分变量赋值</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>类的访问权限</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">访问</th>
+      <th style="text-align: left">public</th>
+      <th style="text-align: left">protected</th>
+      <th style="text-align: left">private</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">同一个类</td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">派生类</td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">外部的类</td>
+      <td style="text-align: left">yes</td>
+      <td style="text-align: left">no</td>
+      <td style="text-align: left">no</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>类成员变量初始化列表</strong></p>
+
+<p>在构造函数后面初始化成员变量；这就可以用构造函数的参数初始成员；类对象只能初始化而不能够简单的赋值，若成员是有参数构造函数的类，则只能通过这种方式初始化；[个人理解：编译器会同时将类声明，和成员初始化列表结合，来进行赋值]</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">A</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span><span class="n">a</span><span class="p">(</span><span class="n">x</span><span class="p">){}</span>
+<span class="p">};</span>
+
+
+<span class="k">class</span> <span class="nc">B</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">var1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">var2</span><span class="p">;</span>
+    <span class="n">A</span> <span class="n">classA</span><span class="p">;</span>   <span class="c1">//会与后面的初始化列表结合来初始化A对象</span>
+    <span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span><span class="n">var1</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="n">var2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">classA</span><span class="p">(</span><span class="mi">10</span><span class="p">){}</span> <span class="c1">//成员初始化</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="42-重载">4.2 重载</h4>
+
+<p>C++ 允许在同一作用域中的某个<strong>函数</strong>和<strong>运算符</strong>指定多个定义，分别称为<strong>函数重载</strong>和<strong>运算符重载</strong>。</p>
+
+<p>当您调用一个<strong>重载函数</strong>或<strong>重载运算符</strong>时，编译器通过把您所使用的参数类型与定义中的参数类型进行比较，决定选用最合适的定义。选择最合适的重载函数或重载运算符的过程，称为<strong>重载决策</strong>。</p>
+
+<p><strong>函数重载</strong></p>
+
+<p><strong>运算符重载</strong></p>
+
+<pre><code class="language-C++">// 重载 + 运算符，用于把两个 Box 对象相加
+Box operator+(const Box&amp; b)
+{
+	/todos...
+}
+Box c = a + b;
+</code></pre>
+
+<h4 id="43-继承">4.3 继承</h4>
+
+<p>本节没什么复杂知识点，简单看看就好；</p>
+
+<p><strong>基本结构</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">baseClass</span><span class="p">{}</span>
+<span class="k">class</span> <span class="nc">derivedClass</span><span class="o">:</span> <span class="n">access</span><span class="o">-</span><span class="n">specifier</span> <span class="n">baseClass</span>
+<span class="p">{</span>
+    <span class="c1">//content</span>
+<span class="p">}</span>
+<span class="c1">//其中访问修饰符为 public、private(默认)、protected、</span>
+</code></pre></div></div>
+
+<p>一个派生类继承了所有的基类方法，但下列情况除外：</p>
+
+<ul>
+  <li>基类的构造函数、析构函数和拷贝构造函数。</li>
+  <li>基类的重载运算符。</li>
+  <li>基类的友元函数。</li>
+</ul>
+
+<p><strong>继承类型</strong>(acces-specifier)</p>
+
+<p>一般只用公有继承；</p>
+
+<ul>
+  <li><strong>公有继承（public）：</strong>【就是按原样继承】当一个类派生自<strong>公有</strong>基类时，基类的<strong>公有</strong>成员也是派生类的<strong>公有</strong>成员，基类的<strong>保护</strong>成员也是派生类的<strong>保护</strong>成员，基类的<strong>私有</strong>成员不能直接被派生类访问，但是可以通过调用基类的<strong>公有</strong>和<strong>保护</strong>成员来访问。</li>
+  <li><strong>保护继承（protected）：</strong> 当一个类派生自<strong>保护</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>保护</strong>成员。</li>
+  <li><strong>私有继承（private）：</strong>当一个类派生自<strong>私有</strong>基类时，基类的<strong>公有</strong>和<strong>保护</strong>成员将成为派生类的<strong>私有</strong>成员。</li>
+</ul>
+
+<p><strong>执行顺序</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">{</span><span class="n">A</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"A()	"</span> <span class="p">;};</span><span class="o">~</span><span class="n">A</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"~A()	"</span><span class="p">;}}</span>
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{</span><span class="n">B</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"B()	"</span><span class="p">;};</span><span class="o">~</span><span class="n">B</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"~B()	"</span><span class="p">;}}</span>
+<span class="c1">//result</span>
+<span class="n">A</span><span class="p">()</span>	<span class="n">B</span><span class="p">()</span>	<span class="o">~</span><span class="n">B</span><span class="p">()</span>	<span class="o">~</span><span class="n">A</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src=".\assets\单继承内存.png" alt="单继承内存" /></p>
+
+<p><strong>多继承</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="err">&lt;派生类名</span><span class="o">&gt;:&lt;</span><span class="err">继承方式</span><span class="mi">1</span><span class="o">&gt;&lt;</span><span class="err">基类名</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="err">继承方式</span><span class="mi">2</span><span class="o">&gt;&lt;</span><span class="err">基类名</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">,</span><span class="err">…</span>
+<span class="p">{</span>
+<span class="o">&lt;</span><span class="err">派生类类体</span><span class="o">&gt;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><img src=".\assets\多继承内存.png" alt="多继承内存" /></p>
+
+<p><strong>菱形继承</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">{</span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;};</span>
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{};</span>
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{};</span>
+<span class="k">class</span> <span class="nc">D</span><span class="o">:</span><span class="k">public</span> <span class="n">B</span><span class="p">,</span><span class="k">public</span> <span class="n">C</span><span class="p">{}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span><span class="n">D</span> <span class="n">d</span><span class="p">;</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span><span class="p">.</span><span class="n">a</span><span class="p">;</span><span class="k">return</span> <span class="mi">0</span><span class="p">}</span>
+<span class="c1">//结果会报错误——“不明确”，需要指定类，d.A::a</span>
+</code></pre></div></div>
+
+<p><img src=".\assets\菱形继承内存.png" alt="菱形继承内存" /></p>
+
+<h4 id="44-多态">4.4 多态</h4>
+
+<p>太长不看版：</p>
+
+<ul>
+  <li>实现多态：基类与派生类要同时拥有同类型同名的<strong>虚函数</strong>；</li>
+  <li>解决菱形继承问题：中间两个基类<strong>虚继承</strong>于上面的基类即可；</li>
+</ul>
+
+<h5 id="441-虚函数">4.4.1 虚函数</h5>
+
+<p>原则：</p>
+
+<ol>
+  <li>继承是会将基类的虚指针(vptr)与基本成员一起继承过来；</li>
+  <li>派生类的虚函数放在继承的第一个基类的虚函数表里；</li>
+  <li>函数的选择<code class="highlighter-rouge">多态</code>是编译器玩的东西，实际到汇编之后，都是<code class="highlighter-rouge">call + [地址]</code>跳转到代码区相应的函数；</li>
+</ol>
+
+<p>原理：</p>
+
+<ol>
+  <li>不管什么情况，vptr和base都是在派生类对象块的全面，故基类指针完全可以派生类中所有基类变量和函数；</li>
+</ol>
+
+<ul>
+  <li><strong>单继承</strong>（包含虚函数）</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">{</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun0</span><span class="p">(){}}</span>
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{</span><span class="n">vitual</span> <span class="kt">void</span> <span class="n">fun1</span><span class="p">(){}}</span>
+<span class="c1">//若基类有虚指针，则派生类不产生新的虚指针</span>
+</code></pre></div></div>
+
+<p><img src=".\assets\单继承（虚函数）内存.png" alt="单继承（虚函数）内存" /></p>
+
+<ul>
+  <li><strong>多继承</strong>（包含虚函数）</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">{</span><span class="k">public</span><span class="o">:</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun1</span><span class="p">(){}}</span>
+<span class="k">class</span> <span class="nc">B</span><span class="p">{</span><span class="k">public</span><span class="o">:</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun2</span><span class="p">(){}}</span>
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">,</span><span class="k">public</span> <span class="n">B</span><span class="p">{</span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun3</span><span class="p">(){};}</span>
+<span class="c1">//派生类的虚函数加在第一个基类的虚函数表里</span>
+<span class="c1">//若派生类重写了基类函数，则所有虚函数表中的“相同函数名且相同函数类型”的函数指针都会被覆盖；</span>
+</code></pre></div></div>
+
+<p><img src=".\assets\1227141-20171009202135684-598313073.png" alt="img" /></p>
+
+<ul>
+  <li><strong>菱形继承</strong>（包含虚函数）</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">{</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun0</span><span class="p">(){};};</span>
+<span class="k">class</span> <span class="nc">B</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun1</span><span class="p">(){};};</span>
+<span class="k">class</span> <span class="nc">C</span><span class="o">:</span><span class="k">public</span> <span class="n">A</span><span class="p">{</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun2</span><span class="p">(){};};</span>
+<span class="k">class</span> <span class="nc">D</span><span class="o">:</span><span class="k">public</span> <span class="n">B</span><span class="p">,</span><span class="k">public</span> <span class="n">C</span><span class="p">{</span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun3</span><span class="p">(){};}</span>
+<span class="c1">//依旧会报错</span>
+</code></pre></div></div>
+
+<p><img src=".\assets\1227141-20171009202217090-1905840340.png" alt="img" /></p>
+
+<h5 id="442-虚继承不包含虚函数">4.4.2 虚继承(不包含虚函数)</h5>
+
+<ul>
+  <li>没有虚函数的虚继承是没有意义的，这儿仅作理解考虑；</li>
+  <li>虚函数的引入，用于<strong>解决菱形继承</strong>出现的问题——最上面的基类被复制两次，会造成二义性和内存冗余问题；</li>
+  <li>函数的选择是编译器玩的东西，实际到汇编之后，都是<code class="highlighter-rouge">call + [地址]</code>跳转到代码区相应的函数；</li>
+  <li>原理是：将虚继承的基类放在最后，用vbptr表指针寻址；</li>
+</ul>
+
+<p><strong>虚基类指针&amp;虚基类表</strong>：虚基类表中首项存储的是本派生类首地址相对于虚基类表指针的偏移量，接下来依次存储这个派生类所有基类的相对于虚基类表指针的偏移量。</p>
+
+<p>原则：</p>
+
+<ul>
+  <li>内存顺序与普通继承相反，为：vbptr、派生类成员、基类成员(多个虚基类时有顺序，但具体情况不清楚；)</li>
+</ul>
+
+<p><img src=".\assets\1227141-20171009202327246-616250349.png" alt="img" /></p>
+
+<p><img src=".\assets\1227141-20171009202408309-1938032979.png" alt="img" /></p>
+
+<p><img src=".\assets\1227141-20171009202554324-1361176386.png" alt="img" /></p>
+
+<p><img src=".\assets\1227141-20171009202623809-2116809521.png" alt="img" /></p>
+
+<h5 id="442-虚继承包含虚函数">4.4.2 虚继承(包含虚函数)</h5>
+
+<ol>
+  <li>派生类拥有自己的虚函数表，和虚函数表指针；</li>
+  <li>内存顺序为：vptr(派生类虚函数表指针)、vbptr(虚基类表指针)、派生类、</li>
+  <li>虚基类表中指针指向的是继承的基类的vptr.</li>
+</ol>
+
+<p><img src=".\assets\1227141-20171009202700434-2010266130.png" alt="img" /></p>
+
+<p><img src=".\assets\1227141-20171009202747637-1915594365.png" alt="img" /></p>
+
+<p><img src=".\assets\1227141-20171009202819824-155387236.png" alt="img" /></p>
+
+<p><a href="https://blog.csdn.net/w007d/article/details/80356534#commentBox">另外一个大佬的方法</a></p>
+
+<h4 id="45-接口抽象类">4.5 接口(抽象类)</h4>
+
+<p>纯虚函数：只有声明，没有实现；格式如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">fun</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>接口：与一般类同一个抽象级别，是一种特殊的类，它至少有一个纯虚函数；它只能被继承，不能实例化；它主要用于</p>
+
+<h4 id="46-类模板">4.6 类模板</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//stk.h</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="kt">int</span> <span class="n">MaxSize</span> <span class="o">=</span> <span class="mi">20</span><span class="o">&gt;</span> 
+<span class="k">class</span> <span class="nc">Stack</span> <span class="p">{</span>
+	<span class="n">T</span> <span class="o">*</span><span class="n">m_pT</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">m_maxSize</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">m_size</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Stack</span><span class="p">();</span>
+	<span class="o">~</span><span class="n">Stack</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">push</span><span class="p">(</span><span class="n">T</span> <span class="n">t</span><span class="p">);</span>
+	<span class="n">T</span> <span class="n">pop</span><span class="p">();</span>
+	<span class="kt">bool</span> <span class="n">isEmpty</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="c1">//stk.cpp    </span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span>  <span class="nc">T</span><span class="p">,</span> <span class="kt">int</span> <span class="n">MaxSize</span><span class="o">&gt;</span>  <span class="c1">//注意参数列表</span>
+<span class="n">Stack</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="n">MaxSize</span><span class="o">&gt;::</span><span class="n">Stack</span><span class="p">()</span> <span class="p">{</span>		  <span class="c1">//注意参数列表</span>
+	<span class="c1">//todos</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//函数类模板的使用</span>
+<span class="cp">#include&lt;functional&gt;
+</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;};</span>
+<span class="c1">//main</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>类模板函数的定义不能放在cpp文件中，详情见下方：</p>
+
+<p>https://blog.csdn.net/caikunbob/article/details/84595367</p>
+
+<h4 id="47-类默认控制default-和-delete函数">4.7 类默认控制:”=default” 和 “=delete”函数</h4>
+
+<ul>
+  <li>C++ 的类有四类特殊成员函数，它们分别是：默认构造函数、析构函数、拷贝构造函数以及拷贝赋值运算符。
+这些类的特殊成员函数负责创建、初始化、销毁，或者拷贝类的对象。</li>
+  <li>
+    <p>如果程序员没有显式地为一个类定义某个特殊成员函数，而又需要用到该特殊成员函数时，则编译器会隐式的为这个类生成一个默认的特殊成员函数。</p>
+  </li>
+  <li>C++11 标准引入了一个新特性：”=default”函数。程序员只需在函数声明后加上“=default;”，就可将该函数声明为 “=default”函数，编译器将为显式声明的 “=default”函数自动生成函数体。</li>
+</ul>
+
+<pre><code class="language-C++">//c++11 类默认函数的控制：
+
+class X
+{ 
+public: 
+    X() = default; //该函数比用户自己定义的默认构造函数获得更高的代码效率
+    X(int i)
+    { 
+        a = i; 
+    }
+
+private: 
+    int a; 
+}; 
+
+X obj;
+
+// "=default"函数特性仅适用于类的特殊成员函数，且该特殊成员函数没有默认参数。
+class X1
+{
+public:
+    int f() = default;      // err , 函数 f() 非类 X 的特殊成员函数
+    X1(int, int) = default;  // err , 构造函数 X1(int, int) 非 X 的特殊成员函数
+    X1(int = 1) = default;   // err , 默认构造函数 X1(int=1) 含有默认参数
+};
+
+// "=default"函数既可以在类体里（inline）定义，也可以在类体外（out-of-line）定义。
+class X2
+{
+public:
+    X2() = default; //Inline defaulted 默认构造函数
+    X2(const X&amp;);
+    X2&amp; operator = (const X&amp;);
+    ~X2() = default;  //Inline defaulted 析构函数
+};
+
+X2::X2(const X&amp;) = default;  //Out-of-line defaulted 拷贝构造函数
+X2&amp; X2::operator= (const X2&amp;) = default;   //Out-of-line defaulted  拷贝赋值操作符
+
+
+// 为了能够让程序员显式的禁用某个函数，C++11 标准引入了一个新特性："=delete"函数。程序员只需在函数声明后上“=delete;”，就可将该函数禁用。
+class X3
+{
+public:
+    X3();
+    X3(const X3&amp;) = delete;  // 声明拷贝构造函数为 deleted 函数
+    X3&amp; operator = (const X3 &amp;) = delete; // 声明拷贝赋值操作符为 deleted 函数
+};
+
+// "=delete"函数特性还可用于禁用类的某些转换构造函数，从而避免不期望的类型转换
+class X4
+{
+public:
+    X4(double)
+    {
+
+    }
+
+    X4(int) = delete;
+};
+
+// "=delete"函数特性还可以用来禁用某些用户自定义的类的 new 操作符，从而避免在自由存储区创建类的对象
+class X5
+{
+public:
+    void *operator new(size_t) = delete;
+    void *operator new[](size_t) = delete;
+};
+
+
+void mytest()
+{
+    X4 obj1;
+    X4 obj2=obj1;   // 错误，拷贝构造函数被禁用
+
+    X4 obj3;
+    obj3=obj1;     // 错误，拷贝赋值操作符被禁用
+
+    X5 *pa = new X5;      // 错误，new 操作符被禁用
+    X5 *pb = new X5[10];  // 错误，new[] 操作符被禁用
+
+    return;
+}
+
+
+int main()
+{
+    mytest();
+
+    system("pause");
+    return 0;
+}
+</code></pre>
+
+<h1 id="4函数式编程">4、函数式编程</h1>
+
+<p>什么是函数式编程？简而言之，函数式编程就是把函数当作普通的数值一样使用。将一个函数行为当作参数传递给另一个函数的方式，在函数式编程的思想中有一个专门术语，称为<strong>行为参数化</strong>（behavior parameterization）。函数式编程往往都是通过<code class="highlighter-rouge">lambda</code>表达式来实现的，这不仅仅局限于C++语言，在Java、Scala等等已经引入函数式编程思想的语言中，都是如此。</p>
+
+<h4 id="41-函数指针">4.1 函数指针</h4>
+
+<p>函数指针类似于数据指针，其本质实质上是一类函数（返回值类型相同，参数个数以及对应的参数类型相同）的入口地址，即该<strong>可执行代码在内存中的起始地址</strong>。函数指针可以让我们通过函数地址去调用该函数。有利于实现函数的动态绑定，即在运行时才决定去调用哪个函数。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;};</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">funptr</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span>		<span class="c1">//声明了指向 int (int,int)这一类函数的指针</span>
+	<span class="n">funptr</span> <span class="o">=</span> <span class="n">fun</span><span class="p">;</span>				<span class="c1">//等价于 &amp;fun</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>	<span class="c1">//等价于 *fun(1,2)</span>
+<span class="p">}</span>
+<span class="c1">//函数指针数组的声明</span>
+<span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">4</span><span class="p">])(</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span>			<span class="c1">//类型别名</span>
+<span class="k">using</span> <span class="n">pf</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span>
+<span class="n">pf</span> <span class="n">v</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h4 id="42-lambda函数">4.2 lambda函数</h4>
+
+<ul>
+  <li>未命名的内联函数; 匿名函数</li>
+  <li>基本格式：<code class="highlighter-rouge">[捕获列表](参数列表)-&gt;返回类型{函数体}</code>; 最简格式：[ ] {};</li>
+</ul>
+
+<p><strong>捕获列表</strong>[ ]</p>
+
+<ul>
+  <li>
+    <p>可以直接调用外面的变量</p>
+
+    <pre><code class="language-C++">auto func(int a,int b)
+{
+    return[a,b](int c,int d){cout &lt;&lt; a + b + c + d &lt;&lt; endl;};
+}
+//main
+func(1,2)(3,4);
+</code></pre>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">[&amp;]</code>可以捕获类成员变量</p>
+
+    <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">fun1</span><span class="p">(){</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">c</span><span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">]{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="43-函数模板">4.3 函数模板</h4>
+
+<p>对不同参数类型的同一种函数的抽象；实例化后就是一个函数；</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//定义</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>  
+<span class="n">T</span> <span class="n">Max</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">b</span> <span class="o">:</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//调用</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">Max</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="44-闭包">4.4 闭包</h4>
+
+<h1 id="5-异常日志调试">5、 异常&amp;日志&amp;调试</h1>
+
+<h4 id="异常处理">异常处理</h4>
+
+<ul>
+  <li><strong>throw:</strong> 当问题出现时，程序会抛出一个异常。这是通过使用 <strong>throw</strong> 关键字来完成的。</li>
+  <li><strong>catch:</strong> 在您想要处理问题的地方，通过异常处理程序捕获异常。<strong>catch</strong> 关键字用于捕获异常。</li>
+  <li><strong>try</strong> ：<strong>try</strong> 块中的代码标识将被激活的特定异常。它后面通常跟着一个或多个 catch 块。</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">throw</span> <span class="s">"Division by zero condition!"</span><span class="p">;</span><span class="c1">//通过if判断，抛出异常</span>
+<span class="p">}</span>
+<span class="k">try</span>
+<span class="p">{</span>
+   <span class="c1">// 保护代码</span>
+<span class="p">}</span><span class="k">catch</span><span class="p">(</span> <span class="n">ExceptionName</span> <span class="n">e1</span> <span class="p">){}</span>
+<span class="k">catch</span><span class="p">(</span> <span class="n">ExceptionName</span> <span class="n">e2</span> <span class="p">){}</span>
+<span class="k">catch</span><span class="p">(</span> <span class="n">ExceptionName</span> <span class="n">eN</span> <span class="p">){}</span>
+<span class="k">catch</span><span class="p">(...){}</span>					<span class="c1">//...可以捕获任何类型的异常</span>
+
+
+
+
+<span class="c1">//example</span>
+<span class="kt">double</span> <span class="n">division</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+   <span class="p">{</span>
+      <span class="k">throw</span> <span class="s">"Division by zero condition!"</span><span class="p">;</span>  
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">try</span> <span class="p">{</span>
+ <span class="n">z</span> <span class="o">=</span> <span class="n">division</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+ <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span><span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+ <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>C++标准异常</strong>: std::exception</p>
+
+<p><img src=".\assets\exceptions_in_cpp.png" alt="C++标准异常" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">异常</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>std::exception</strong></td>
+      <td style="text-align: left">该异常是所有标准 C++ 异常的父类。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::bad_alloc</td>
+      <td style="text-align: left">该异常可以通过 <strong>new</strong> 抛出。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::bad_cast</td>
+      <td style="text-align: left">该异常可以通过 <strong>dynamic_cast</strong> 抛出。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::bad_exception</td>
+      <td style="text-align: left">这在处理 C++ 程序中无法预期的异常时非常有用。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::bad_typeid</td>
+      <td style="text-align: left">该异常可以通过 <strong>typeid</strong> 抛出。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>std::logic_error</strong></td>
+      <td style="text-align: left">理论上可以通过读取代码来检测到的异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::domain_error</td>
+      <td style="text-align: left">当使用了一个无效的数学域时，会抛出该异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::invalid_argument</td>
+      <td style="text-align: left">当使用了无效的参数时，会抛出该异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::length_error</td>
+      <td style="text-align: left">当创建了太长的 std::string 时，会抛出该异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::out_of_range</td>
+      <td style="text-align: left">该异常可以通过方法抛出，例如 std::vector 和 std::bitset&lt;&gt;::operator<a href=""></a>。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>std::runtime_error</strong></td>
+      <td style="text-align: left">理论上不可以通过读取代码来检测到的异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::overflow_error</td>
+      <td style="text-align: left">当发生数学上溢时，会抛出该异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::range_error</td>
+      <td style="text-align: left">当尝试存储超出范围的值时，会抛出该异常。</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">std::underflow_error</td>
+      <td style="text-align: left">当发生数学下溢时，会抛出该异常。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>定义自己的异常</strong></p>
+
+<p>可以通过继承和重载 <strong>exception</strong> 类来定义新的异常。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;exception&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+ 
+<span class="k">struct</span> <span class="n">MyException</span> <span class="o">:</span> <span class="k">public</span> <span class="n">exception</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">what</span> <span class="p">()</span> <span class="k">const</span> <span class="k">throw</span> <span class="p">()</span>  <span class="c1">//what函数必须被重写(overwrite)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"C++ Exception"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">try</span>
+  <span class="p">{</span>
+    <span class="k">throw</span> <span class="n">MyException</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="n">MyException</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"MyException caught"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">//其他的错误</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//result</span>
+<span class="n">MyException</span> <span class="n">caught</span>
+<span class="n">C</span><span class="o">++</span> <span class="n">Exception</span>
+</code></pre></div></div>
+
+<h4 id="日志">日志</h4>
+
+<h4 id="调试">调试</h4>
+
+<h1 id="6c的内存">6、C++的内存</h1>
+
+<p>在C++中，内存分成5个区，他们分别是<strong>堆、栈、自由存储区、全局/静态存储区和常量存储区</strong>。</p>
+
+<ul>
+  <li><strong>栈</strong>：就是那些由编译器在需要的时候分配，在不需要的时候自动清楚的变量的存储区。里面的变量通常是局部变量、函数参数等。</li>
+  <li><strong>堆</strong>：就是那些由new分配的内存块，他们的释放编译器不去管，由我们的应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。</li>
+  <li><strong>自由存储区</strong>：就是那些由malloc等分配的内存块，他和堆是十分相似的，不过它是用free来结束自己的生命的。</li>
+  <li><strong>全局/静态存储区</strong>：全局变量和静态变量被分配到同一块内存中，在以前的C语言中，全局变量又分为初始化的和未初始化的，在C++里面没有这个区分了，他们共同占用同一块内存区。</li>
+  <li><strong>常量存储区</strong>：这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改</li>
+  <li><strong>代码区</strong>：</li>
+</ul>
+
+<p><img src=".\assets\1341996876_7225.jpg" alt="img" /></p>
+
+<h4 id="61-栈运行时的操作">6.1 栈运行时的操作</h4>
+
+<p><strong>汇编查看</strong></p>
+
+<p>VS调试时，项目——窗口——反汇编   可以看到汇编代码；</p>
+
+<p>ebp 栈底、esp 栈顶、eip 指令指针、</p>
+
+<p>从高地址→低地址；</p>
+
+<p><img src=".\assets\Snipaste_2019-07-31_12-34-58.png" alt="Snipaste_2019-07-31_12-34-58" /></p>
+
+<p>函数运行流程（即上图中栈逐渐向右走）：</p>
+
+<pre><code class="language-assembly">#栈顶esp小于栈底ebp,地址逐渐减小
+#eax累加器,ebp扩展基址指针,esp扩展堆栈指针
+#所有地址都是32位，所以本程序只有4G的大小可以使用
+#下面是代码区中的部分汇编代码
+push ebp				#压上层函数的栈底指针
+mov ebp,esp				#当前函数的栈底,通过[ebp+偏移量]使用实参
+sub esp,xx1h			#根据已知的函数临时变量大小+固定空白区域(0C0h)，跳转到空白区域后面
+push ebx...				#保存现场
+#执行子函数
+push arg1...			#压入实参
+#jump到子函数fun
+call fun				
+push ebp 				#另起一个函数，即重复与开始类似的指令
+...
+...
+ret						#跳转回来
+add esp,xx2h			#回到现场(edi寄存器)在栈中位置的后面
+mov eax,[ebp + 偏移量]   #返回值
+#本函数的下一个函数，或者执行返回值
+...
+...
+#本函数结束工作
+mov eax,[ebp + 偏移量]   #返回值
+pop edi...				#恢复现场
+mov esp,ebp
+pop ebp					#恢复上层函数栈底
+ret						#执行跳转之前的下一条指令
+####
+</code></pre>
+
+<h1 id="7-编译器">7、 编译器</h1>
+
+<p><strong>(1）编译单元（模块）</strong></p>
+
+<p>　　在VC或VS上编写完代码，点击编译按钮准备生成exe文件时，编译器做了两步工作：</p>
+
+<p>　　第一步，将每个.cpp(.c)和相应的.h文件编译成obj文件；</p>
+
+<p>　　第二步，将工程中所有的obj文件进行LINK，生成最终.exe文件。</p>
+
+<p>　　那么，错误可能在两个地方产生：</p>
+
+<p>　　一个，编译时的错误，这个主要是语法错误；</p>
+
+<p>　　一个，链接时的错误，主要是重复定义变量等。</p>
+
+<p>​</p>
+
+<p>　　编译单元指在编译阶段生成的每个obj文件。</p>
+
+<p>　　一个obj文件就是一个编译单元。</p>
+
+<p>　　一个.cpp(.c)和它相应的.h文件共同组成了一个编译单元。</p>
+
+<p>　　一个工程由很多编译单元组成，每个obj文件里包含了变量存储的相对地址等。</p>
+
+<p><strong>（2）声明与定义</strong></p>
+
+<p>​    函数或变量在<strong>声明</strong>时，并没有给它实际的物理内存空间，它有时候可保证你的程序编译通过；</p>
+
+<p>​    函数或变量在<strong>定义</strong>时，它就在内存中有了实际的物理空间。</p>
+
+<p>​    如果你在编译单元中引用的外部变量没有在整个工程中任何一个地方定义的话，那么即使它在编译时可以通过，在连接时也会报错，因为程序在内存中找不到这个变量。</p>
+
+<p>​    <strong>函数或变量可以声明多次，但定义只能有一次。</strong></p>
+
+<h1 id="其他知识">其他知识</h1>
+
+<h4 id="命名空间">命名空间</h4>
+
+<p>为区分同名的情况而引入的概念。本质上，命名空间就是定义了一个范围。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#定义
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="n">firstSpace</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="n">function1</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"function1"</span><span class="p">;};</span>
+    <span class="kt">void</span> <span class="n">function2</span><span class="p">(){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"function2"</span><span class="p">;};</span>
+<span class="p">}</span>
+
+
+<span class="cp">#使用
+</span><span class="n">firstSpace</span><span class="o">::</span><span class="n">function1</span><span class="p">();</span>
+
+<span class="cp">#using namespace指令,后续的代码将使用指定的命名空间中的名称；注意局部代码块的使用。
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">firstSpace</span><span class="p">;</span>
+
+<span class="cp">#using 指令也可以用来指定命名空间中的特定项目。
+</span><span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h1 id="未分类知识点">未分类知识点</h1>
+
+<p><strong>重载</strong>指的是函数具有的不同的参数列表，而<strong>函数名相同</strong>的函数。重载要求参数列表必须不同，比如参数的类型不同、参数的个数不同、参数的顺序不同。如果仅仅是函数的返回值不同是没办法重载的，因为重载要求参数列表必须不同。（发生在同一个类里）</p>
+
+<p><strong>覆盖</strong>是存在类中，子类重写从基类继承过来的函数。被<strong>重写</strong>的函数不能是static的。必须是virtual的。但是函数名、返回值、参数列表都必须和基类相同（发生在基类和子类）</p>
+
+<p>类对象内存空间占用：类成员变量按其原有数据大小存储；</p>
+
+<p><strong>overload</strong>()：可以将语义、功能相似的几个函数用同一个名字表示，但参数不同（包括类型、顺序不同），即函数重载。
+（1）相同的范围（在同一个类中）；
+（2）函数名字相同；
+（3）参数不同；</p>
+
+<p>注意，重载解析中不考虑返回类型，而且在不同的作用域里声明的函数也不算是重载。</p>
+
+<ul>
+  <li><strong>Override</strong>(覆盖)：是指派生类虚函数覆盖基类虚函数，特征是：</li>
+</ul>
+
+<p>（1）不同的范围（分别位于派生类与基类）；
+  （2）函数名字相同；
+  （3）参数相同；
+  （4）基类函数必须有virtual 关键字。</p>
+
+<p><strong>Overwrite</strong>(重写)：是指派生类的函数屏蔽了与其同名的基类函数，规则如下：</p>
+
+<ul>
+  <li>（1）如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual关键字，基类的函数将被隐藏。</li>
+  <li>（2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual关键字。此时，基类的函数被隐藏（注意别与覆盖混淆)</li>
+</ul>
+
+<h1 id="附--基本的语法练习">附  基本的语法练习</h1>
+
+<ol>
+  <li>定义两个同名的函数放在两个命令空间中，并在主函数中交替调用这两个函数。</li>
+  <li>创建一个栈类模板，可以存储任意数据类型，有top()、pop()、push()、isempty()等函数。</li>
+</ol>
+
+<p>答案：</p>
+
+<ol>
+  <li></li>
+</ol>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#交替使用不同命名空间同名函数
+</span><span class="k">namespace</span> <span class="n">firstSpace</span>
+<span class="p">{</span>
+	<span class="kt">void</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"function1"</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">namespace</span> <span class="n">secondSpace</span>
+<span class="p">{</span>
+	<span class="kt">void</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"function2"</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="p">{</span>
+		<span class="k">using</span> <span class="k">namespace</span> <span class="n">firstSpace</span><span class="p">;</span>
+		<span class="n">function</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="p">{</span>
+		<span class="k">using</span> <span class="k">namespace</span> <span class="n">secondSpace</span><span class="p">;</span>
+		<span class="n">function</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>2.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">,</span><span class="kt">int</span> <span class="n">MaxSize</span> <span class="o">=</span> <span class="mi">100</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Stk</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">T</span> <span class="n">m</span><span class="p">[</span><span class="n">MaxSize</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">T</span> <span class="n">top</span><span class="p">()</span> <span class="k">return</span> <span class="n">m</span><span class="p">[</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+	<span class="kt">void</span> <span class="nf">push</span><span class="p">(</span><span class="n">T</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">&lt;</span> <span class="n">MaxSize</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">m</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+			<span class="n">size</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Stack is full."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">T</span> <span class="nf">pop</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"stack is empty"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="n">size</span><span class="o">--</span><span class="p">;</span>
+			<span class="k">return</span> <span class="n">m</span><span class="p">[</span><span class="n">size</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="kt">bool</span> <span class="nf">isEmpty</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">else</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+
+  </body>
+</html>
