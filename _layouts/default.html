@@ -6,7 +6,17 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
   </head>
   <body>
-      {% include navigation.html %}
-    {{ content }}
+    <div >
+      <div>
+        {% include navigation.html %}
+      </div>
+      <div style="float: left">
+        侧边栏
+      </div>
+      <div style="float: left">
+
+        {{ content }}
+      </div>
+    </div>
   </body>
 </html>
